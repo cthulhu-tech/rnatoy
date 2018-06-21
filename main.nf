@@ -35,6 +35,7 @@ params.reads="$baseDir/data/ggal"
 params.readsExtension="fq"
 allReads="${params.reads}/*_{1_2}.${params.readsExtension}"
 
+System.out.println(allReads)
 
 params.annot = "$baseDir/data/ggal/ggal_1_48850000_49020000.bed.gff"
 params.genome = "$baseDir/data/ggal/ggal_1_48850000_49020000.Ggal71.500bpflank.fa"
