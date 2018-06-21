@@ -30,7 +30,12 @@
  * Defines some parameters in order to specify the refence genomes
  * and read pairs by using the command line options
  */
-params.reads = "$baseDir/data/ggal/*_{1,2}.fq"
+//params.reads = "$baseDir/data/ggal/*_{1,2}.fq"
+params.reads="$baseDir/data/ggal"
+params.readsExtension="fq"
+allReads="${params.reads}/*_{1_2}.${params.readsExtension}"
+
+
 params.annot = "$baseDir/data/ggal/ggal_1_48850000_49020000.bed.gff"
 params.genome = "$baseDir/data/ggal/ggal_1_48850000_49020000.Ggal71.500bpflank.fa"
 params.outdir = 'results'
@@ -56,7 +61,7 @@ annotation_file = file(params.annot)
  * the pair ID, the first read-pair file and the second read-pair file 
  */
 Channel
-    .fromFilePairs( params.reads )
+    .fromFilePairs( allReads )
     .ifEmpty { error "Cannot find any reads matching: ${params.reads}" }
     .set { read_pairs } 
  
