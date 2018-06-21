@@ -31,7 +31,7 @@
  * and read pairs by using the command line options
  */
 //params.reads = "$baseDir/data/ggal/*_{1,2}.fq"
-params.reads="$baseDir/data/ggal"
+params.reads="$baseDir/data/ggal/"
 params.readsExtension="fq"
 allReads="${params.reads}/*_{1_2}.${params.readsExtension}"
 
