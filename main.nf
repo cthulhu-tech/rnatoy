@@ -33,7 +33,7 @@
 //params.reads = "$baseDir/data/ggal/*_{1,2}.fq"
 params.reads="$baseDir/data/ggal/"
 params.readsExtension="fq"
-allReads="${params.reads}/*_{1_2}.${params.readsExtension}"
+allReads="${params.reads}/*_{1,2}.${params.readsExtension}"
 
 System.out.println(allReads)
 
