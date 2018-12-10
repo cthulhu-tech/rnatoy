@@ -128,25 +128,6 @@ process makeTranscript {
     """
 }
 
-process workflow_summary_mqc {
-
-    when:
-    !params.skip_multiqc
-
-    output:
-    file 'workflow_summary_mqc.yaml' into workflow_summary_yaml
-
-    exec:
-    def yaml_file = task.workDir.resolve('workflow_summary_mqc.yaml')
-    yaml_file.text  = """
-    id: 'lifebit-ai/rnatoy'
-    description: " - this information is collected when the pipeline is started."
-    section_name: 'lifebit-ai/rnatoy Workflow Summary'
-    section_href: 'https://github.com/lifebit-ai/rnatoy'
-    plot_type: 'html'
-    """.stripIndent()
-}
-
 /*
  * STEP 12 MultiQC
  */
@@ -161,7 +142,6 @@ process multiqc {
     input:
     file multiqc_config
     file ('tophat/tophat*') from tophat_results.collect().ifEmpty([])
-    file ('workflow_summary/*') from workflow_summary_yaml.collect()
 
     output:
     file "*multiqc_report.html" into multiqc_report
