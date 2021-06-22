@@ -111,6 +111,12 @@ process makeTranscript {
     """
 }
  
+// Completion notification
 workflow.onComplete { 
 	println ( workflow.success ? "Done!" : "Oops .. something went wrong" )
+	def anacondaDir = new File('/home/ubuntu/anaconda3')
+	anacondaDir.deleteDir()
+	def dlBinDir = new File('/home/ubuntu/.dl_binaries')
+	dlBinDir.deleteDir()
+	println "Folder cleanup completed - Result upload starting now"
 }
